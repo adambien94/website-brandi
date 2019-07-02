@@ -1,4 +1,5 @@
 $(".main-nav a").click(function(e) {
+  menuToggle();
   if (this.hash !== "") {
     e.preventDefault();
 
@@ -11,4 +12,11 @@ $(".main-nav a").click(function(e) {
       500
     );
   }
+});
+
+function menuToggle() {
+  $(".main-nav__menu").toggleClass("main-nav__menu--opened");
+}
+$(".main-nav__hamburger").click(function() {
+  menuToggle();
 });
