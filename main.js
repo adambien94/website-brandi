@@ -38,7 +38,7 @@ let counterFlag = false;
 $(window).scroll(function() {
   const counter = $(".counter");
   const windowOffset = $(this).scrollTop() + $(this).height();
-  const counterOffset = counter.offset().top + counter.height() + 10;
+  const counterOffset = counter.offset().top;
 
   if (windowOffset > counterOffset) {
     counting();
@@ -47,5 +47,5 @@ $(window).scroll(function() {
 });
 
 function counting() {
-  $(".counter").counterUp();
+  $(".counter").counterUp({ delay: 10, time: 400 });
 }
