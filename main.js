@@ -32,3 +32,20 @@ $('input:radio[name="images"]').change(function() {
     $(".main-header__background").css("transform", "translateY(200%)");
   }
 });
+
+let counterFlag = false;
+
+$(window).scroll(function() {
+  const counter = $(".counter");
+  const windowOffset = $(this).scrollTop() + $(this).height();
+  const counterOffset = counter.offset().top + counter.height() + 10;
+
+  if (windowOffset > counterOffset) {
+    counting();
+    $(this).unbind();
+  }
+});
+
+function counting() {
+  $(".counter").counterUp();
+}
