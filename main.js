@@ -1,4 +1,4 @@
-$(".main-nav a").click(function(e) {
+$(".main-nav a").on("click", function(e) {
   menuToggle();
   if (this.hash !== "") {
     e.preventDefault();
@@ -14,9 +14,21 @@ $(".main-nav a").click(function(e) {
   }
 });
 
+$(".main-nav__hamburger").on("click", () => {
+  menuToggle();
+});
+
 function menuToggle() {
   $(".main-nav__menu").toggleClass("main-nav__menu--opened");
+  $(".hamburger__stripes").toggleClass("hamburger__stripes--crossed");
 }
-$(".main-nav__hamburger").click(function() {
-  menuToggle();
+
+$('input:radio[name="images"]').change(function() {
+  if ($(this).attr("id") === "i1") {
+    $(".main-header__background").css("transform", "translateY(0)");
+  } else if ($(this).attr("id") === "i2") {
+    $(".main-header__background").css("transform", "translateY(100%)");
+  } else if ($(this).attr("id") === "i3") {
+    $(".main-header__background").css("transform", "translateY(200%)");
+  }
 });
