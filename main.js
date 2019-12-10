@@ -33,19 +33,23 @@ $('input:radio[name="images"]').change(function() {
   }
 });
 
-let counterFlag = false;
+const counters = document.querySelectorAll(".counter");
 
-$(window).scroll(function() {
-  const counter = $(".counter");
-  const windowOffset = $(this).scrollTop() + $(this).height();
-  const counterOffset = counter.offset().top;
+const options = {
+  root: null,
+  threshold: 0,
+  rootMargin: "-50px"
+};
 
-  if (windowOffset > counterOffset) {
-    counting();
-    $(this).unbind();
-  }
+const observer = new IntersectionObserver(function(entries, observer) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      return;
+    }
+    console.log(entry.target.id);
+  });
+}, options);
+
+counters.forEach(counter => {
+  observer.observe(counter);
 });
-
-function counting() {
-  $(".counter").counterUp({ delay: 10, time: 400 });
-}
